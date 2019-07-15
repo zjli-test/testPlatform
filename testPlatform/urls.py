@@ -21,7 +21,8 @@ from django.conf.urls import url,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('index.urls')),
-    path(r'user/', include('user.urls')),
-    path(r'index/', include('index.urls')),
+    path(r'', include('user.urls')),
+    path(r'', include('index.urls')),
+    path(r'wx',include('wechat.urls',namespace="wechat"))
 
 ]

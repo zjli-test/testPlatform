@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+<header id="'top">
+    <!-- -->
+    <div id="top_box">
+        <ul class="lf">
+            <li><a href="#">测试平台</a></li>
+            <li><a href="#">用户须知</a></li>
+        </ul>
+        <ul class="rt">
+            {% if username %}
+                <li>用户名：{{ username }}</li>
+                <li><a href="{% url 'logout' %}">退出登录</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">登录</a></li>
+                <li><a href="{% url 'register' %}">注册</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</header>
+<body>
+
+</body>
+</html>

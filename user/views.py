@@ -6,9 +6,9 @@ from django.contrib.auth.hashers import make_password
 #登录
 def loginView(request):
     title="登录";
-    unit_2="/user/register.html";
+    unit_2="/register";
     unit_2_name="立即注册";
-    unit_1="/user/setpassword.html";
+    unit_1="/setpassword";
     unit_1_name="修改密码";
     if request.method == "POST":
         username= request.POST.get('username','');
@@ -18,19 +18,19 @@ def loginView(request):
             if user:
                 if user.is_active:
                     login(request,user)
-                return redirect('/index/index.html')
+                return redirect('/index')
             else:
                 tips="账号密码错误，请重新输入"
         else:
             tips="用户不存在，请注册"
-    return render(request,'user.html', locals())
+    return render(request, 'login.html', locals())
 
 #注册
 def registerView(request):
     title='立即注册'
-    unit_2='/user/login.html'
+    unit_2='/login'
     unit_2_name='立即登录'
-    unit_1='/user/setpassword.html'
+    unit_1='/setpassword'
     unit_1_name='修改密码'
     if request.method == 'POST':
         username = request.POST.get('username','')
@@ -45,9 +45,9 @@ def registerView(request):
 #修改密码
 def setpasswordView(request):
     title = '修改密码'
-    unit_2 = '/user/login.html'
+    unit_2 = '/login'
     unit_2_name = '立即登录'
-    unit_1 = '/user/register.html'
+    unit_1 = '/register'
     unit_1_name = '立即注册'
     if request.method == 'POST':
         username= request.POST.get('username','')
@@ -75,4 +75,5 @@ def setpasswordView(request):
 #退出登录
 def logoutView(request):
     logout(request)
-    return redirect('/user/login.html')
+    return redirect('/login')
+
